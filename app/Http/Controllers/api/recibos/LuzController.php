@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\api;
+namespace App\Http\Controllers\api\recibos;
 
 use App\ReciboLuz;
-use http\Env\Response;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Response;
 
 class LuzController extends Controller
 {
@@ -16,21 +16,7 @@ class LuzController extends Controller
      */
     public function index()
     {
-        $response = new \Illuminate\Http\Response();
-        $rLuz = ReciboLuz::all();
-        $response->setContent($rLuz);
-
-        return $response;
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+         return Response::create(ReciboLuz::all());
     }
 
     /**
@@ -51,17 +37,6 @@ class LuzController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
     {
         //
     }

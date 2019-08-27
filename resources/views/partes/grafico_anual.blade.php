@@ -1,4 +1,8 @@
 <div class="row">
+    <div class="traffic-chart">
+        <grafico-anual-component></grafico-anual-component>
+    </div>
+
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
