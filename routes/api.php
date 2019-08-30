@@ -19,3 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::resource('luz','api\recibos\LuzController');
+Route::resource('gas','api\recibos\GasController');

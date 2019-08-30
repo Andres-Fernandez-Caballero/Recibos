@@ -1775,40 +1775,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 
-console.log('hola');
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'grafico-anual',
   components: {
     LinearChart: _graficos_lineales_Linear_chart__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
     return {
-      loaded: false,
-      chartdata: null
+      datacollection: null
     };
   },
   mounted: function () {
     var _mounted = _asyncToGenerator(
     /*#__PURE__*/
     _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-      var _this = this;
-
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              this.loaded = false;
-              _context.next = 3;
-              return axios.get('/api/luz').then(function (response) {
-                return _this.chartdata = response;
-              })["catch"](console.log('error'));
+              this.fillData();
 
-            case 3:
-              this.loaded = true;
-
-            case 4:
+            case 1:
             case "end":
               return _context.stop();
           }
@@ -1821,7 +1808,96 @@ console.log('hola');
     }
 
     return mounted;
-  }()
+  }(),
+  methods: {
+    fillData: function () {
+      var _fillData = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var uriLuz, uriGas, rLuz, rGas, meses, saldoLuz, saldoGas;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                uriLuz = '/api/luz';
+                uriGas = '/api/gas';
+                meses = [];
+                saldoLuz = [];
+                saldoGas = [];
+                _context2.next = 7;
+                return axios.get(uriLuz).then(function (response) {
+                  rLuz = response.data;
+                  console.log('datos cargados' + rLuz);
+
+                  for (var i = 0; i < rLuz.length; i++) {
+                    meses[i] = rLuz[i].mes;
+                    saldoLuz[i] = rLuz[i].saldo;
+                  }
+                })["catch"](function () {
+                  console.log('error de api rest recibos');
+                });
+
+              case 7:
+                _context2.next = 9;
+                return axios.get(uriGas).then(function (response) {
+                  rGas = response.data;
+                  console.log('datos cargados' + rGas);
+
+                  for (var i = 0; i < rGas.length; i++) {
+                    meses[i] = rGas[i].mes;
+                    saldoGas[i] = rGas[i].saldo;
+                  }
+                })["catch"](function () {
+                  console.log('error de api rest recibos');
+                });
+
+              case 9:
+                this.datacollection = {
+                  labels: meses,
+                  datasets: [{
+                    label: 'recibos de luz',
+                    borderColor: "rgba(4, 73, 203,.09)",
+                    borderWidth: "1",
+                    backgroundColor: "rgba(4, 73, 203,.5)",
+                    data: saldoLuz
+                  }, {
+                    label: 'Data One',
+                    borderColor: "rgba(203,9,46,0.09)",
+                    borderWidth: "1",
+                    backgroundColor: "rgba(203,20,66,0.5)",
+                    data: saldoGas
+                  }],
+                  options: [{
+                    scales: {
+                      YAxes: [{}]
+                    },
+                    responsive: true,
+                    tooltips: {
+                      mode: 'index',
+                      intersect: false
+                    },
+                    hover: {
+                      mode: 'nearest',
+                      intersect: true
+                    }
+                  }]
+                };
+
+              case 10:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      function fillData() {
+        return _fillData.apply(this, arguments);
+      }
+
+      return fillData;
+    }()
+  }
 });
 
 /***/ }),
@@ -1837,19 +1913,15 @@ console.log('hola');
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_chartjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-chartjs */ "./node_modules/vue-chartjs/es/index.js");
 
+var reactiveProp = vue_chartjs__WEBPACK_IMPORTED_MODULE_0__["mixins"].reactiveProp;
 /* harmony default export */ __webpack_exports__["default"] = ({
   "extends": vue_chartjs__WEBPACK_IMPORTED_MODULE_0__["Line"],
-  props: {
-    chartdata: {
-      type: Object,
-      "default": null
-    },
-    options: {
-      responsive: true
-    }
-  },
+  mixins: [reactiveProp],
+  props: ['options'],
   mounted: function mounted() {
-    this.renderChart(this.chartdata, this.options);
+    // this.chartData is created in the mixin.
+    // If you want to pass options please create a local options object
+    this.renderChart(this.chartData, this.options);
   }
 });
 
@@ -70514,12 +70586,8 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "container" },
-    [
-      _vm.loaded
-        ? _c("linear-chart", { attrs: { chartdata: _vm.chartdata } })
-        : _vm._e()
-    ],
+    { staticClass: "g-anual" },
+    [_c("linear-chart", { attrs: { "chart-data": _vm.datacollection } })],
     1
   )
 }
@@ -82700,7 +82768,7 @@ Vue.use(vue_chartjs__WEBPACK_IMPORTED_MODULE_0__["default"], axios__WEBPACK_IMPO
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
-Vue.component('line_cart', __webpack_require__(/*! ./components/graficos/lineales/Linear-chart */ "./resources/js/components/graficos/lineales/Linear-chart.vue")["default"]);
+Vue.component('line-chart', __webpack_require__(/*! ./components/graficos/lineales/Linear-chart */ "./resources/js/components/graficos/lineales/Linear-chart.vue")["default"]);
 Vue.component('grafico-anual-component', __webpack_require__(/*! ./components/GraficoAnual */ "./resources/js/components/GraficoAnual.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to

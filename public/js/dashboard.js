@@ -167,7 +167,6 @@ jQuery(document).ready(function($) {
                     mode: 'nearest',
                     intersect: true
                 }
-
             }
         } );
     }
