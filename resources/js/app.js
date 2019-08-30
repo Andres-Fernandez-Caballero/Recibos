@@ -25,7 +25,7 @@ Vue.use(VueCharts,Axios);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('line_cart', require('./components/graficos/lineales/Linear-chart').default);
+Vue.component('line-chart', require('./components/graficos/lineales/Linear-chart').default);
 Vue.component('grafico-anual-component', require('./components/GraficoAnual').default);
 
 /**

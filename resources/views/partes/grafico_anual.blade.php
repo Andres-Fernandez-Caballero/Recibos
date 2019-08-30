@@ -1,18 +1,15 @@
 <div class="row">
-    <div class="traffic-chart">
-        <grafico-anual-component></grafico-anual-component>
-    </div>
-
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
                 <h4 class="box-title">Traffic </h4>
             </div>
             <div class="row">
-                <div class="col-lg-8">
+                <div class="col-lg-8 ">
                     <div class="card-body">
+                      <grafico-anual-component/>
                         <!-- <canvas id="TrafficChart"></canvas>   -->
-                        <div id="traffic-chart" class="traffic-chart"></div>
+                       <!-- <div id="traffic-chart" class="traffic-chart"></div> -->
                     </div>
                 </div>
                 <div class="col-lg-4">
