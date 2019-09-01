@@ -75,7 +75,7 @@
                     options:[{
                         scales:{
                             YAxes:[{
-                                
+
                             }]
                         },
                         responsive: true,
