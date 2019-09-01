@@ -18,7 +18,7 @@
                             <h4 class="por-title">Visits</h4>
                             <div class="por-txt">96,930 Users (40%)</div>
                             <div class="progress mb-2" style="height: 5px;">
-                                <div class="progress-bar bg-info" role="progressbar" style="width: 40%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="progress-bar animated bg-info" role="progressbar" style="width: 40%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
                         <div class="progress-box progress-2">
