@@ -11,8 +11,10 @@
 |
 */
 
+use App\Http\Controllers\ReciboGasController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/','WebController@index')->name('web.index');
 
 Route::resource('/luz','LuzController');
+Route::resource('/gas','ReciboGasController');

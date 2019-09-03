@@ -15,9 +15,27 @@
 </template>
 
 <script>
+
     export default {
+        created(){
+            cargarRecibos()
+        },
+
         mounted() {
             console.log('Component mounted.')
+            //axios.get('api/luz').then(response=>(this.recivos = response))
+        },
+        data(){
+            return{
+
+                recivos:null
+            }
+        },
+
+        methods:{
+            cargarRecibos(){
+                axios.get('api/luz').then(response=>(this.recivos = response))
+            }
         }
     }
 </script>
