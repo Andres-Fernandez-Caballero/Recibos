@@ -14,14 +14,29 @@
     <title>Laravel</title>
 
     <!-- Fonts y styles -->
-@include('partes.styles')
+    @include('partes.styles')
 </head>
 <body>
 <div id="app">
     <!-- Barra lateral -->
-    @yield('barra_lateral')
-    <!-- Contenido Principal -->
-    @yield('contenido_principal')
+@yield('barra_lateral')
+<!-- Contenido Principal -->
+    <div id="right-panel" class="right-panel">
+        <!-- Header-->
+    @include('partes.header')
+    <!-- Content -->
+        <div class="content">
+            <!-- Animated -->
+        @yield('contenido_principal')
+        <!-- .animated -->
+        </div>
+        <!-- /.content -->
+        <div class="clearfix"></div>
+        <!-- Footer -->
+    @include('partes.footer')
+    <!-- /.site-footer -->
+    </div>
+
 
 </div>
 <!-- Scripts -->

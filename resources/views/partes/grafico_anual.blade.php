@@ -2,7 +2,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="box-title">Traffic </h4>
+                <h4 class="box-title">Estadisticas Anuales </h4>
             </div>
             <div class="row">
                 <div class="col-lg-8 ">

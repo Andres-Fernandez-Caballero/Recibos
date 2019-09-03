@@ -9,7 +9,7 @@
                     </div>
                     <div class="stat-content">
                         <div class="text-left dib">
-                            <div class="stat-text">$<span class="count">23569</span>  <span class="text-muted"><i class="fas fa-arrow-up"></i></span></div>
+                            <div class="stat-text">$<span class="count">23569</span>  <span class="text-muted"><i class="fa-2x ti-stats-down"></i></span></div>
                             <div class="stat-heading">Luz</div>
                         </div>
                     </div>

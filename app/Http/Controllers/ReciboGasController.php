@@ -14,7 +14,16 @@ class ReciboGasController extends Controller
      */
     public function index()
     {
-        //
+        try{
+            $recibo = ReciboGas::all();
+        }catch (\Exception $exception){
+            return redirect()->route('web.index');
+        }
+        $data = [
+            'titulo' => 'Recibos de Luz',
+            'recibos' => $recibo,
+        ];
+        return view('recibos.listado')->with('data',$data);
     }
 
     /**
