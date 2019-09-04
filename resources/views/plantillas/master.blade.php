@@ -27,6 +27,8 @@
     <!-- Content -->
         <div class="content">
             <!-- Animated -->
+            @include('partes.listar_errores')
+            @include('partes.listar_exitos')
         @yield('contenido_principal')
         <!-- .animated -->
         </div>

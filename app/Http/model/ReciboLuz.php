@@ -2,9 +2,10 @@
 
 namespace App;
 
+use App\interfaces\RListable;
 use Illuminate\Database\Eloquent\Model;
 
-class ReciboLuz extends Model
+class ReciboLuz extends Model implements RListable
 {
     protected $table = 'recibosLuz';
     protected $primaryKey = 'id';

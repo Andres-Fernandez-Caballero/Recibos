@@ -2,9 +2,10 @@
 
 namespace App;
 
+use App\interfaces\RListable;
 use Illuminate\Database\Eloquent\Model;
 
-class ReciboGas extends Model
+class ReciboGas extends Model implements RListable
 {
 
     protected $primaryKey = 'id';

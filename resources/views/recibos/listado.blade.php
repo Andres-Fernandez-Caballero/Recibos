@@ -4,9 +4,7 @@
             titulo = el titulo a mostrar en la plantilla,
             recibos = un array con los recibos a ser mostrados
             ]
-    *El modelo del recibo dene contener los siguientes metodos
-        public funtion getConsumoFormateado(void) : String
-        public funtion getSaldoFormateado(void) : String
+    *El modelo del recibo dene implementar la interface RListable
 -->
 
 @extends('plantillas.master')
